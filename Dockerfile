@@ -1,11 +1,11 @@
-# Use an OpenJDK image to build the app
-FROM openjdk:8-jdk-alpine
+# Use a supported OpenJDK runtime
+FROM eclipse-temurin:17-jdk-alpine
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy the built jar file
+# Copy your JAR inside the image
 COPY target/MyFirstKafkaProject-1.0-SNAPSHOT.jar /app/kafka-example.jar
 
-# Specify the command to run the producer or consumer
+# Default entry (will be completed by docker-compose)
 ENTRYPOINT ["java", "-cp", "/app/kafka-example.jar"]
